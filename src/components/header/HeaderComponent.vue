@@ -1,0 +1,23 @@
+<template>
+  <v-app-bar :elevation="8" rounded>
+    <template v-slot:prepend>
+    </template>
+    <v-app-bar-title><b>Requisitos de documentos</b> Empresa Test</v-app-bar-title>
+
+    <template v-slot:append>
+      <b>{{ userName }}</b>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    </template>
+  </v-app-bar>
+</template>
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+const userName = ref('');
+onMounted(async () => {
+  const storedUserInfo = localStorage.getItem('userinfo');
+  if (storedUserInfo) {
+    userName.value = JSON.parse(storedUserInfo).nombre;
+  }
+});
+
+</script>
