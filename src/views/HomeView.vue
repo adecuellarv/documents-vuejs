@@ -1,15 +1,21 @@
 <template>
-  <div class="Home">
+  <div class="home">
     <h1>Home</h1>
   </div>
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .Home {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+.home {
+  position: relative;
+  left: 260px;
+  top: 70px;
+}
+
+@media (max-width: 1279px) {
+  .home {
+    position: relative;
+    left: 10px;
+    top: 70px;
   }
 }
 </style>

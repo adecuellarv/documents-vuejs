@@ -46,9 +46,9 @@ const validateFields = async () => {
 
   const response = await axios.get(`usuarios/login?userName=${userName.value}&password=${password.value}`);
   const authorizationHeader = response.headers['authorization'];
-  if(authorizationHeader) document.cookie = `token=${authorizationHeader}; path=/; secure; SameSite=Strict`;
-  if(response?.data) localStorage.setItem('userinfo', JSON.stringify(response.data));
-  if(authorizationHeader && response?.data) router.push('/home')
+  if (authorizationHeader) document.cookie = `token=${authorizationHeader}; path=/; secure; SameSite=Strict`;
+  if (response?.data) localStorage.setItem('userinfo', JSON.stringify(response.data));
+  if (authorizationHeader && response?.data) router.push('/home')
 };
 </script>
 
