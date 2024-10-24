@@ -19,7 +19,7 @@ axiosInstance.interceptors.request.use(config => {
 
 axiosInstance.interceptors.response.use(
   response => response,
-  error => { debugger
+  error => {
     if (error.response) {
       Swal.fire({
         title: 'Error',
