@@ -6,14 +6,24 @@
   </v-app>
 </template>
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import HeaderComponent from './components/header/HeaderComponent.vue';
 import SlideLeft from './components/slide/SlideLeft.vue';
-const isLoggedIn = ref(false);
-onMounted(async () => {
+const isLoggedIn = ref(true);
+const route = useRoute();
+const currentUrl = ref(route.fullPath);
+
+onMounted(() => {
+  // Observar cambios en la ruta
+  watch(route, handleUrlChange);
+});
+
+const handleUrlChange = () => {
+  currentUrl.value = route.fullPath;
   if (getCookie('token')) isLoggedIn.value = true;
   else isLoggedIn.value = false;
-});
+};
 
 const getCookie = (name: string) => {
   const value = `; ${document.cookie}`;

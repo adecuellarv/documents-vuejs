@@ -4,7 +4,7 @@
     <v-app-bar-title><b>Requisitos de documentos</b> Empresa Test</v-app-bar-title>
 
     <template v-slot:append>
-      <b>{{ userName }} Ade Cuellar</b>
+      <b>{{ userName }}</b>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
     </template>
   </v-app-bar>

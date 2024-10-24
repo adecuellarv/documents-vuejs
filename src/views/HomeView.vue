@@ -7,12 +7,12 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import DataTableSolicitantes from '@/components/table/DataTableSolicitantes.vue';
+import DataTableSolicitantes from '@/components/table/solicitantes/DataTableSolicitantes.vue';
 
 const componentWidth = ref(0);
 
 const updateWidth = () => {
-  componentWidth.value = window.innerWidth - 260;
+  componentWidth.value = window.innerWidth - 280;
 };
 
 onMounted(() => {
