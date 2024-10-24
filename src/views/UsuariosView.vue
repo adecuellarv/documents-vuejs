@@ -1,11 +1,13 @@
 <template>
-  <div class="documents" :style="{ width: componentWidth + 'px' }">
-    <DocumentsComponet />
+  <div class="home" :style="{ width: componentWidth + 'px' }">
+    <div>
+      <DataTableUsuarios />
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import DocumentsComponet from '@/components/documents/DocumentsComponet.vue';
+import DataTableUsuarios from '@/components/table/usuarios/DataTableUsuarios.vue';
 
 const componentWidth = ref(0);
 
@@ -23,14 +25,14 @@ onBeforeUnmount(() => {
 });
 </script>
 <style>
-.documents {
+.home {
   position: relative;
   left: 260px;
   top: 70px;
 }
 
 @media (max-width: 1279px) {
-  .documents {
+  .home {
     position: relative;
     left: 10px;
     top: 70px;

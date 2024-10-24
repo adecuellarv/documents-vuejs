@@ -30,8 +30,8 @@
       <v-card-text>
         <v-text-field v-model="nameNewItem" label="Nombre"
           :rules="[v => !!v || 'El campo no puede estar vacío']"></v-text-field>
-          <v-text-field v-model="extensionNewItem" label="Extensión"
-          :rules="[v => !!v || 'El campo no puede estar vacío']"></v-text-field>
+          <v-select v-model="extensionNewItem" :items="listExtensions" item-text="title" item-value="title" label="Select"
+          variant="outlined" :rules="[v => !!v || 'El campo no puede estar vacío']"></v-select>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -50,8 +50,8 @@
       <v-card-text>
         <v-text-field v-model="editedItem.nombre" label="Nombre"
           :rules="[v => !!v || 'El campo no puede estar vacío']"></v-text-field>
-          <v-text-field v-model="editedItem.extension" label="Extensión"
-          :rules="[v => !!v || 'El campo no puede estar vacío']"></v-text-field>
+          <v-select v-model="editedItem.extension" :items="listExtensions" item-text="title" item-value="title" label="Select"
+          variant="outlined" :rules="[v => !!v || 'El campo no puede estar vacío']"></v-select>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -93,6 +93,17 @@ const createDialog = ref(false);
 const nameNewItem = ref('');
 const extensionNewItem = ref('');
 const titleTable = ref('Requisitos');
+const listExtensions = ref([
+  {
+    title: 'pdf'
+  },
+  {
+    title: 'img'
+  },
+  {
+    title: 'xml'
+  }
+])
 const search = ref('');
 
 const requistosStore = useRequisitosStore();
