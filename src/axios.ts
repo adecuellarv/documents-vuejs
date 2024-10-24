@@ -19,7 +19,7 @@ axiosInstance.interceptors.request.use(config => {
 
 axiosInstance.interceptors.response.use(
   response => response,
-  error => {
+  error => { debugger
     if (error.response) {
       Swal.fire({
         title: 'Error',
@@ -27,7 +27,9 @@ axiosInstance.interceptors.response.use(
         icon: 'error',
         confirmButtonText: '¡Entendido!'
       })
-      if(!error?.response?.data?.error) removeCookie('token');
+      if (error?.response?.status === 401) {
+        removeCookie('token');
+      }
     } else if (error.request) {
       Swal.fire({
         title: 'No se recibió respuesta',
