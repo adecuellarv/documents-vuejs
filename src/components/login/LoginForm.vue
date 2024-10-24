@@ -16,9 +16,6 @@
           </v-btn>
         </div>
       </div>
-      <div class="text-center div-msg-ca">
-        <p>Si no tienes cuenta <b>Crear una</b></p>
-      </div>
     </div>
   </v-app>
 </template>

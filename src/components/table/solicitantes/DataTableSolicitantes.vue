@@ -102,7 +102,6 @@ const items = ref([]);
 
 const headers = [
   { text: 'Nombre', value: 'nombre' },
-  { text: 'Total de tramites', value: 'solicitanteId' },
   { text: 'Actions', value: 'actions', sortable: false }
 ];
 
