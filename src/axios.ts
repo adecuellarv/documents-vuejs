@@ -12,8 +12,8 @@ axiosInstance.interceptors.response.use(
   error => {
     if (error.response) {
       Swal.fire({
-        title: 'Error del servidor',
-        text: '',
+        title: 'Error',
+        text: error?.response?.data?.error,
         icon: 'error',
         confirmButtonText: '¡Entendido!'
       })

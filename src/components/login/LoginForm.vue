@@ -26,10 +26,12 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import Swal from 'sweetalert2';
+import { useRouter } from 'vue-router';
 import axios from '../../axios';
 
 const userName = ref('');
 const password = ref('');
+const router = useRouter();
 
 const validateFields = async () => {
   if (!userName.value || !password.value) {
@@ -42,8 +44,11 @@ const validateFields = async () => {
     return;
   }
 
-  const response = await axios.get(`usuarios?userName=${userName.value}&password=${password.value}`);
-  console.log('#response', response)
+  const response = await axios.get(`usuarios/login?userName=${userName.value}&password=${password.value}`);
+  const authorizationHeader = response.headers['authorization'];
+  if(authorizationHeader) document.cookie = `token=${authorizationHeader}; path=/; secure; SameSite=Strict`;
+  if(response?.data) localStorage.setItem('userinfo', JSON.stringify(response.data));
+  if(authorizationHeader && response?.data) router.push('/home')
 };
 </script>
 
