@@ -1,12 +1,14 @@
 <template>
-  <div class="Home">
-    <h1>Home</h1>
+  <div class="Login">
+    <LoginForm />
   </div>
 </template>
-
+<script setup lang="ts">
+import LoginForm from '../components/login/LoginForm.vue';
+</script>
 <style>
 @media (min-width: 1024px) {
-  .about {
+  .Login {
     min-height: 100vh;
     display: flex;
     align-items: center;
