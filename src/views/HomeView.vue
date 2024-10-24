@@ -1,9 +1,29 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
+  <div class="home" :style="{ width: componentWidth + 'px' }">
+    <div>
+      <DataTableSolicitantes />
+    </div>
   </div>
 </template>
+<script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import DataTableSolicitantes from '@/components/table/DataTableSolicitantes.vue';
 
+const componentWidth = ref(0);
+
+const updateWidth = () => {
+  componentWidth.value = window.innerWidth - 260;
+};
+
+onMounted(() => {
+  updateWidth();
+  window.addEventListener('resize', updateWidth);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateWidth);
+});
+</script>
 <style>
 .home {
   position: relative;
