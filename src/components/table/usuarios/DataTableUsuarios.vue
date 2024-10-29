@@ -23,7 +23,7 @@ const search = ref('');
 const solicitantesStore = usuariosStore();
 const { setUsuarios } = solicitantesStore;
 
-const items = ref([]);
+const items = computed(() => solicitantesStore.usuarios);
 
 const headers = [
   { text: 'Nombre', value: 'nombre' },
@@ -32,7 +32,7 @@ const headers = [
 ];
 
 onMounted(async () => {
-  getItems()
+  await getItems()
 });
 
 // Computed para filtrar los elementos según el texto de búsqueda
@@ -48,7 +48,6 @@ const filteredItems = computed(() => {
 const getItems = async () => {
   const response = await axios.get('/usuarios');
   setUsuarios(response?.data);
-  items.value = response.data;
 }
 
 </script>

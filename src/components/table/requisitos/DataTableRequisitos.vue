@@ -109,7 +109,7 @@ const search = ref('');
 const requistosStore = useRequisitosStore();
 const { setRequisitos } = requistosStore;
 
-const items = ref([]);
+const items = computed(() => requistosStore.requisitos);
 
 const headers = [
   { text: 'Nombre', value: 'nombre' },
@@ -118,7 +118,7 @@ const headers = [
 ];
 
 onMounted(async () => {
-  getItems()
+  await getItems()
 });
 
 // Computed para filtrar los elementos según el texto de búsqueda
@@ -195,7 +195,6 @@ const saveCreate = async () => {
 const getItems = async () => {
   const response = await axios.get('/requisitos');
   setRequisitos(response?.data);
-  items.value = response.data;
 }
 
 const getUserId = () => {

@@ -97,8 +97,7 @@ const router = useRouter();
 
 const solicitantesStore = useSolicitantesStore();
 const { setSolicitantes } = solicitantesStore;
-
-const items = ref([]);
+const items = computed(() => solicitantesStore.solicitantes);
 
 const headers = [
   { text: 'Nombre', value: 'nombre' },
@@ -106,10 +105,9 @@ const headers = [
 ];
 
 onMounted(async () => {
-  getItems()
+  await getItems()
 });
 
-// Computed para filtrar los elementos según el texto de búsqueda
 const filteredItems = computed(() => {
   if (!search.value) return items.value;
   return items.value.filter(item => {
@@ -181,7 +179,6 @@ const goTo = (item) => {
 const getItems = async () => {
   const response = await axios.get('/solicitantes');
   setSolicitantes(response?.data);
-  items.value = response.data;
 }
 
 const getUserId = () => {
