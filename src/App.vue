@@ -10,7 +10,7 @@ import { ref, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import HeaderComponent from './components/header/HeaderComponent.vue';
 import SlideLeft from './components/slide/SlideLeft.vue';
-const isLoggedIn = ref(true);
+const isLoggedIn = ref(false);
 const route = useRoute();
 const currentUrl = ref(route.fullPath);
 

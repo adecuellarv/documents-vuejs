@@ -98,7 +98,7 @@ const listExtensions = ref([
     title: 'pdf'
   },
   {
-    title: 'img'
+    title: 'jpg'
   },
   {
     title: 'xml'
